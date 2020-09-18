@@ -1,0 +1,5 @@
+{
+    "sketch": "ZiegelCAN.ino",
+    "board": "arduino:avr:micro",
+    "port": "COM3"
+}

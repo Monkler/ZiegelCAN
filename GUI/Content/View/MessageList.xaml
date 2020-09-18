@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="ZiegelCAN.MessageList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ZiegelCAN"
+             mc:Ignorable="d" 
+             x:Name="MessageList1"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <local:LastItemConverter x:Key="LastItemConverter" />
+        <local:CountToVisibleConverter x:Key="CountToVisibleConverter" />
+        <local:DataToStringConverter x:Key="DataToStringConverter" />        
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="17" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Background="#EEEEEEEE">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="35" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" BorderBrush="#CCCCCC" BorderThickness="1" />
+            <Label Grid.Column="1" Content="Timestamp" BorderBrush="#CCCCCC" BorderThickness="1" />
+            <Label Grid.Column="2" Content="ID" BorderBrush="#CCCCCC" BorderThickness="1" />
+            <Label Grid.Column="3" Content="Name" BorderBrush="#CCCCCC" BorderThickness="1" />
+            <Label Grid.Column="4" Content="Data" BorderBrush="#CCCCCC" BorderThickness="1" />
+            <Label Grid.Column="5" Content="Len" BorderBrush="#CCCCCC" BorderThickness="1" />
+            <Label Grid.Column="6" Content="Cycle" BorderBrush="#CCCCCC" BorderThickness="1" />
+            <Label Grid.Column="7" Content="Count" BorderBrush="#CCCCCC" BorderThickness="1" />
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Background="#EEEEEEEE">
+            <Label Grid.Column="0" BorderBrush="#CCCCCC" BorderThickness="1"/>
+        </Grid>
+        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <ItemsControl HorizontalAlignment="Stretch" Background="Transparent" ItemsSource="{Binding Messages, IsAsync=True}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid x:Name="MessageItemList" HorizontalAlignment="Stretch" Visibility="{Binding Count, Converter={StaticResource CountToVisibleConverter}}">
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.DataContext>
+                                    <MultiBinding Converter="{StaticResource LastItemConverter}">
+                                        <Binding />
+                                        <Binding Path="Count" />
+                                    </MultiBinding>
+                                </Grid.DataContext>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25" />
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="35" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="4*" />
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Background="#CCCCCC">
+                                    <Grid Background="White" Margin="1 1 1 1">
+                                        <Image Source="pack://application:,,,/Resources/Icon/Message.png" Margin="5" />
+                                    </Grid>                                    
+                                </Grid>
+                                <Grid Grid.Column="1" Background="#CCCCCC">
+                                    <Grid Background="White" Margin="1 1 1 1">
+                                        <TextBlock Text="{Binding Timestamp, StringFormat=\{0:hh\\:mm\\:ss\\:ff\}, FallbackValue=00:00:00.00 }" Margin="3 3 0 0"  />
+                                    </Grid>                                    
+                                </Grid>
+                                <Grid Grid.Column="2" Background="#CCCCCC">
+                                    <Grid Background="White" Margin="1 1 1 1">
+                                        <TextBlock Text="{Binding Id, StringFormat=0x\{0:X2\}, FallbackValue=0x00 }" Margin="3 3 0 0" />
+                                    </Grid>                                    
+                                </Grid>
+                                <Grid Grid.Column="3" Background="#CCCCCC">
+                                    <Grid Background="White" Margin="1 1 1 1">
+                                        <TextBlock Text="" Margin="3 3 0 0" />
+                                    </Grid>                                    
+                                </Grid>
+                                <Grid Grid.Column="4" Background="#CCCCCC">
+                                    <Grid Background="White" Margin="1 1 1 1">
+                                        <TextBlock Text="{Binding Data, Converter={StaticResource DataToStringConverter}}" Margin="3 3 0 0" />
+                                      </Grid>                                    
+                                </Grid>
+                                <Grid Grid.Column="5" Background="#CCCCCC">
+                                    <Grid Background="White" Margin="1 1 1 1">
+                                        <TextBlock Text="{Binding Length}" Margin="0 3 3 0" HorizontalAlignment="Right" />
+                                    </Grid>
+                                </Grid>
+                                <Grid Grid.Column="6" Background="#CCCCCC">
+                                    <Grid Background="White" Margin="1 1 1 1">
+                                        <TextBlock Text="" Margin="3 3 0 0" />
+                                    </Grid>
+                                </Grid>
+                                <Grid Grid.Column="7" Background="#CCCCCC">
+                                    <Grid Background="White" Margin="1 1 1 1">
+                                        <TextBlock Text="{Binding DataContext.Count, ElementName=MessageItemList, FallbackValue=0}" Margin="0 3 3 0" HorizontalAlignment="Right" />
+                                    </Grid>                                    
+                                </Grid>
+                            </Grid>
+                        </Grid>                        
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

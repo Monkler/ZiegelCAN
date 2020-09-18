@@ -1,0 +1,18 @@
+﻿<Window x:Class="ZiegelCAN.ExceptionDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Icon="pack://application:,,,/Resources/Icon/Error.png"
+             mc:Ignorable="d" Topmost="True" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" ResizeMode="NoResize" Height="390" Width="650">
+    <Grid>
+        <TextBlock TextWrapping="Wrap" x:Name="MessageLabel" VerticalAlignment="Top" Margin="5,5,120,0" Padding="5 2 5 2" Height="96" Background="#F9F0EEEE" />
+        <Label Margin="0,0,0,225" Content="Exception:" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+        <TextBox x:Name="ExceptionTextBox" Height="173" Margin="5,0,5,55" VerticalAlignment="Bottom" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" />
+        <Button Content="OK" Margin="0,0,10,10"  Width="100" Height="32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="OnOKButtonClick" />
+        <Image HorizontalAlignment="Right" Height="96" Margin="0,5,10,0" VerticalAlignment="Top" Width="96" Source="pack://application:,,,/Resources/Icon/Exception.png" />
+        <Button ToolTip="Copy to Clipboard" HorizontalAlignment="Right" Margin="0,0,5,230" VerticalAlignment="Bottom" Width="24" Height="24" Background="{x:Null}" BorderBrush="{x:Null}" Click="OnCopyToClipboardClick">
+            <Image Source="pack://application:,,,/Resources/Icon/Copy.png" />
+        </Button>
+    </Grid>
+</Window>
