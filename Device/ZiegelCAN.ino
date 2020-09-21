@@ -8,10 +8,21 @@
 
 MCP_CAN CAN(SPI_CS_PIN);
 
+bool isInit = false;
+
 void setup() {
   Serial.begin(115200);
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, 0);
+
+  if (CAN_OK != CAN.begin(CAN_500KBPS)) { 
+      Serial.println("I BAD");          
+  }
+  else {
+    Serial.println("I OK");
+    digitalWrite(LED_PIN, 1);
+    //isInit = true;
+  }
 }
 
 void printTimestamp() {
@@ -61,20 +72,29 @@ void loop() {
     String msg = Serial.readStringUntil('\r');
 
     if (msg.startsWith("I")) {
-      digitalWrite(LED_PIN, 0);
+      digitalWrite(LED_PIN, 0);      
 
       if (CAN_OK != CAN.begin(msg.substring(2).toInt())) { // CAN_500KBPS
-          Serial.println("I BAD");          
+          Serial.println("I BAD"); 
+          isInit = false;         
       }
       else {
         Serial.println("I OK");
         digitalWrite(LED_PIN, 1);
+        isInit = true;
       }
     }
     else if (msg.startsWith("M")) {
       digitalWrite(LED_PIN, 0);
-      CAN.setMode((byte)msg.substring(2).toInt());
-      digitalWrite(LED_PIN, 1);
+      
+
+      if (CAN_OK != CAN.setMode((byte)msg.substring(2).toInt())) { 
+          Serial.println("M BAD");          
+      }
+      else {
+        Serial.println("M OK");
+        digitalWrite(LED_PIN, 1);
+      }
     }
     else if (msg.startsWith("W") && msg.length() >= 24) {
       digitalWrite(LED_PIN, 0);     
@@ -107,7 +127,7 @@ void loop() {
     }
   }
 
-  if (CAN_MSGAVAIL == CAN.checkReceive())
+  if (isInit && CAN_MSGAVAIL == CAN.checkReceive())
   {
     unsigned char len = 0;
     unsigned char buf[8];
