@@ -6,9 +6,10 @@ Simple easy to use and cheap CAN GUI + Device
 
 ![Screenshot](/Dokumentation/GUI-Screenshot.png)
 
-The GUI is written in C# and can be easily modified. Such as adding additinal drivers for different devices.
+The GUI is written in C# .NET and can be easily modified. Such as adding additinal drivers for different devices.
 
-The GUI supports additinally to the own device following CAN Devices:
+Currently supported devices:
+- ZiegelCAN: Based on Arduino and MC2515
 - Innomaker: USB zu CAN Konverter Modul (https://www.inno-maker.com/product/usb-can/) (~22€)
 - PEAK: PCAN (https://www.peak-system.com/PC-Interfaces.196.0.html?&L=1) (150€ - 400€)
 
