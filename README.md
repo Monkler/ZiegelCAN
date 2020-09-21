@@ -90,7 +90,7 @@ Following commands are supported:
 
 ### Assembly examples
 
-*Arduino Pro Micro + MC2515 DevBoard*
+**Arduino Pro Micro + MC2515 DevBoard**
 
 Arduino Pro Micro (3€ - 17€):
 
@@ -119,7 +119,7 @@ Schematic:
  
 ![Housing](/Dokumentation/Device-ArduinoProMicro-Housing.png)
 
-*Arduino Beetle + MC2515 DevBoard*
+**Arduino Beetle + MC2515 DevBoard**
 
 Arduino Beetle (~9€):
 
