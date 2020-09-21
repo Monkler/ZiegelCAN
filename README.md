@@ -11,6 +11,7 @@ The GUI is written in C# .NET and can be easily modified. Such as adding additin
 Currently supported devices:
 - ZiegelCAN: Based on Arduino and MC2515
 - Innomaker: USB zu CAN Konverter Modul (https://www.inno-maker.com/product/usb-can/) (~22€)
+  - [Amazon](https://www.amazon.de/USB-CAN-Konvertermodul-f%C3%BCr-Raspberry-Zero/dp/B07Q812QK8/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=usb+to+can&qid=1600685248&s=computers&sr=1-1)
 - PEAK: PCAN (https://www.peak-system.com/PC-Interfaces.196.0.html?&L=1) (150€ - 400€)
 
 ## Device
