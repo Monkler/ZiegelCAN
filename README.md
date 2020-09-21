@@ -94,14 +94,14 @@ Following commands are supported:
 
 Arduino Pro Micro (3€ - 17€):
 
-![Arduino Pro Micro](/Dokumentation/ArduinoProMicro.png)
+![Arduino Pro Micro](/Dokumentation/ArduinoProMicro.jpg)
 
 - [Reichelt](https://www.reichelt.de/arduino-micro-atmega32u4-microusb-arduino-micro-p130166.html?PROVID=2788&gclid=Cj0KCQjwnqH7BRDdARIsACTSAdt4MO3BU86DtwXu6JJwXzTQyJRWxugqHoVLU8AKw7-FK6P4etoctqoaAkZBEALw_wcB&&r=1)
 - [Amazon](https://www.amazon.de/s?k=arduino+pro+micro&adgrpid=68574559182&gclid=Cj0KCQjwnqH7BRDdARIsACTSAdsH_4IlpHdsxaQXSTaCFc4L0vXTYrDDimj4OuBm9ByWzXVA2E6BKU8aAofPEALw_wcB&hvadid=352893259388&hvdev=c&hvlocphy=9042646&hvnetw=g&hvqmt=e&hvrand=7661705581012956852&hvtargid=aud-952184766223%3Akwd-298203302135&hydadcr=20073_1780756&tag=googhydr08-21&ref=pd_sl_2zvjlp4hz1_e)
 
 MC2515 Devboard (~6€):
 
-![MC2515 Devboard](/Dokumentation/MC2515Devboard.png)
+![MC2515 Devboard](/Dokumentation/MC2515Devboard.jpg)
 
 - [Reichelt](https://www.reichelt.de/entwicklerboards-can-modul-mcp2515-mcp2562-debo-can-modul-p239277.html?PROVID=2788&gclid=Cj0KCQjwnqH7BRDdARIsACTSAduSsxQXZH1qjitB8yJM9Uq9lB601zxAiicDDWQApFdCmpEz34VcJ7oaAtaXEALw_wcB&&r=1)
 - [Conrad](https://www.conrad.de/de/p/joy-it-sbc-can01-can-interface-1-st-passend-fuer-arduino-banana-pi-raspberry-pi-cubieboard-1720599.html?hk=SEM&WT.srch=1&WT.mc_id=google_pla&s_kwcid=AL%21222%213%21367270211499%21%21%21g%21%21&ef_id=Cj0KCQjwnqH7BRDdARIsACTSAdtjLrU0uN2fT1p9jbrQR8k4eKA0wHKeFqM9jfXznG4Rc9zTmOjwDoUaArQVEALw_wcB%3AG%3As&gclid=Cj0KCQjwnqH7BRDdARIsACTSAdtjLrU0uN2fT1p9jbrQR8k4eKA0wHKeFqM9jfXznG4Rc9zTmOjwDoUaArQVEALw_wcB&refresh=true)
@@ -123,13 +123,13 @@ Schematic:
 
 Arduino Beetle (~9€):
 
-![Arduino Beetle](/Dokumentation/ArduinoBeetle.png)
+![Arduino Beetle](/Dokumentation/ArduinoBeetle.jpg)
 
 - [Amazon](https://www.amazon.de/DollaTek-ATMEGA32U4-USB-Entwicklungsplatinenmodul-kompatibel-Leonardo/dp/B07ML2RX59/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=14238SW0479DR&dchild=1&keywords=Arduino+Beetle&qid=1600682161&quartzVehicle=121-634&replacementKeywords=arduino&sprefix=philips+am%2Caps%2C168&sr=8-2)
 
 MC2515 Devboard (~6€):
 
-![MC2515 Devboard](/Dokumentation/MC2515Devboard.png)
+![MC2515 Devboard](/Dokumentation/MC2515Devboard.jpg)
 
 - [Reichelt](https://www.reichelt.de/entwicklerboards-can-modul-mcp2515-mcp2562-debo-can-modul-p239277.html?PROVID=2788&gclid=Cj0KCQjwnqH7BRDdARIsACTSAduSsxQXZH1qjitB8yJM9Uq9lB601zxAiicDDWQApFdCmpEz34VcJ7oaAtaXEALw_wcB&&r=1)
 - [Conrad](https://www.conrad.de/de/p/joy-it-sbc-can01-can-interface-1-st-passend-fuer-arduino-banana-pi-raspberry-pi-cubieboard-1720599.html?hk=SEM&WT.srch=1&WT.mc_id=google_pla&s_kwcid=AL%21222%213%21367270211499%21%21%21g%21%21&ef_id=Cj0KCQjwnqH7BRDdARIsACTSAdtjLrU0uN2fT1p9jbrQR8k4eKA0wHKeFqM9jfXznG4Rc9zTmOjwDoUaArQVEALw_wcB%3AG%3As&gclid=Cj0KCQjwnqH7BRDdARIsACTSAdtjLrU0uN2fT1p9jbrQR8k4eKA0wHKeFqM9jfXznG4Rc9zTmOjwDoUaArQVEALw_wcB&refresh=true)
