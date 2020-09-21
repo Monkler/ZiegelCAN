@@ -77,3 +77,5 @@ Schematic:
 3D-Print housing:
 
  - See "/Device/ArduinoBeetle-Housing.sdl"
+ 
+ ![Housing](/Dokumentation/Device-ArduinoBeetle-Housing.png)
