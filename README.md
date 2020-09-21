@@ -1,6 +1,6 @@
 # ZiegelCAN
 
-Simple easy / very cheap to use CAN GUI + Device
+Simple easy to use and cheap CAN GUI + Device
 
 ## GUI
 
