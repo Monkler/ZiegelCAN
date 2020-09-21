@@ -111,9 +111,9 @@ MC2515 Devboard (~6€):
 
 Schematic:
 
-![Schematic](/Dokumentation/Device-ArduinoProMicro-Schematic.png)
+<img src="/Dokumentation/Device-ArduinoProMicro-Picture.png" width="200">
 
-![Picture](/Dokumentation/Device-ArduinoProMicro-Picture.png)
+<img src="/Dokumentation/Device-ArduinoProMicro-Schematic.png" width="200">
 
 3D-Print housing:
 
@@ -139,9 +139,9 @@ MC2515 Devboard (~6€):
 
 Schematic:
 
-![Schematic](/Dokumentation/Device-ArduinoBeetle-Schematic.png)
-
 ![Picture](/Dokumentation/Device-ArduinoBeetle-Picture.png)
+
+![Schematic](/Dokumentation/Device-ArduinoBeetle-Schematic.png)
 
 3D-Print housing:
 
