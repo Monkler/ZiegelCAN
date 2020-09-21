@@ -118,7 +118,7 @@ Schematic:
 
  - See "/Device/ArduinoProMicro-Housing.sdl"
  
-![Housing](/Dokumentation/Device-ArduinoProMicro-Housing.png)
+![Housing](/Device/Device-ArduinoProMicro-Housing.png)
 
 **Arduino Beetle + MC2515 DevBoard**
 
@@ -145,4 +145,4 @@ Schematic:
 
  - See "/Device/ArduinoBeetle-Housing.sdl"
  
- ![Housing](/Dokumentation/Device-ArduinoBeetle-Housing.png)
+ ![Housing](/Device/Device-ArduinoBeetle-Housing.png)
