@@ -4,15 +4,15 @@
             "name": "Win32",
             "includePath": [
                 ".\\arduino-1.8.12\\tools\\**",
+                ".\\arduino-1.8.12\\libraries\\**",
                 ".\\arduino-1.8.12\\hardware\\arduino\\avr\\**",
                 ".\\arduino-1.8.12\\hardware\\tools\\avr\\avr\\include\\**",
-                ".\\include\\**"
+                ".\\arduino-1.8.12\\include\\**"
             ],
             "forcedInclude": [
                 ".\\arduino-1.8.12\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
             ],
             "intelliSenseMode": "msvc-x64",
-            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "defines": [

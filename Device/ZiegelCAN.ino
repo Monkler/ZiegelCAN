@@ -21,7 +21,7 @@ void setup() {
   else {
     Serial.println("I OK");
     digitalWrite(LED_PIN, 1);
-    //isInit = true;
+    isInit = true;
   }
 }
 
@@ -41,19 +41,28 @@ void printCharAsHex(unsigned char* value) {
   Serial.print(String((byte)(*value), HEX));
 }
 
-void printMessage(unsigned char* canId, unsigned char* len, unsigned char* buf) {
-  printCharAsHex(canId);
+void printMessage(unsigned int* canId, unsigned char* len, unsigned char* buf) {  
+  if (*canId <= 255) {
+    Serial.print("0");
+  }
+
+  if (*canId <= 15) {
+    Serial.print("0");
+  }
+
+  Serial.print(String(*canId, HEX));
+
   Serial.print(" ");
   printCharAsHex(len);
   Serial.print(" ");
-  printCharAsHex(&(buf[0]));
-  printCharAsHex(&(buf[1]));
-  printCharAsHex(&(buf[2]));
-  printCharAsHex(&(buf[3]));
-  printCharAsHex(&(buf[4]));
-  printCharAsHex(&(buf[5]));
-  printCharAsHex(&(buf[6]));
-  printCharAsHex(&(buf[7]));
+
+  for (int i = 0; i < *len; i++) {
+    printCharAsHex(&(buf[i]));
+  }
+
+  for (int i = *len; i < 8; i++) {
+    Serial.print("00");
+  }
 }
 
 int hex2int(char ch)
@@ -100,17 +109,17 @@ void loop() {
       digitalWrite(LED_PIN, 0);     
 
       const char *msgStr = msg.c_str();
-      unsigned char canId = hex2int(msgStr[2]) << 4 | hex2int(msgStr[3]);
-      unsigned char len = hex2int(msgStr[5]) << 4 | hex2int(msgStr[6]);
+      unsigned int canId = hex2int(msgStr[2]) << 8 | hex2int(msgStr[3]) << 4 | hex2int(msgStr[4]);
+      unsigned char len = hex2int(msgStr[6]) << 4 | hex2int(msgStr[7]);
       unsigned char buf[8];
-      buf[0] = hex2int(msgStr[8]) << 4 | hex2int(msgStr[9]);
-      buf[1] = hex2int(msgStr[10]) << 4 | hex2int(msgStr[11]);
-      buf[2] = hex2int(msgStr[12]) << 4 | hex2int(msgStr[13]);
-      buf[3] = hex2int(msgStr[14]) << 4 | hex2int(msgStr[15]);
-      buf[4] = hex2int(msgStr[16]) << 4 | hex2int(msgStr[17]);
-      buf[5] = hex2int(msgStr[18]) << 4 | hex2int(msgStr[19]);
-      buf[6] = hex2int(msgStr[20]) << 4 | hex2int(msgStr[21]);
-      buf[7] = hex2int(msgStr[22]) << 4 | hex2int(msgStr[23]);
+      buf[0] = hex2int(msgStr[9]) << 4 | hex2int(msgStr[10]);
+      buf[1] = hex2int(msgStr[11]) << 4 | hex2int(msgStr[12]);
+      buf[2] = hex2int(msgStr[13]) << 4 | hex2int(msgStr[14]);
+      buf[3] = hex2int(msgStr[15]) << 4 | hex2int(msgStr[16]);
+      buf[4] = hex2int(msgStr[17]) << 4 | hex2int(msgStr[18]);
+      buf[5] = hex2int(msgStr[19]) << 4 | hex2int(msgStr[20]);
+      buf[6] = hex2int(msgStr[21]) << 4 | hex2int(msgStr[22]);
+      buf[7] = hex2int(msgStr[23]) << 4 | hex2int(msgStr[24]);
 
       CAN.sendMsgBuf(canId, 0, len, buf, false);
 
@@ -133,7 +142,7 @@ void loop() {
     unsigned char buf[8];
     CAN.readMsgBuf(&len, buf);
 
-    unsigned char canId = CAN.getCanId();
+    unsigned int canId = CAN.getCanId();
 
     Serial.print("R ");
     printTimestamp();
