@@ -85,7 +85,9 @@ int hex2int(char ch)
     return -1;
 }
 
-struct can_frame canMsg; 
+struct can_frame sendCanMsg; 
+struct can_frame receiveCanMsg[30];
+int receiveCanMsgIndicator =  0;
 
 void loop() {
   if (Serial.available()) {
@@ -145,31 +147,31 @@ void loop() {
 
       const char *msgStr = msg.c_str();
 
-      canMsg.can_id = hex2int(msgStr[2]) << 8 | hex2int(msgStr[3]) << 4 | hex2int(msgStr[4]);
-      if (canMsg.can_id > 2047) {
-        canMsg.can_id = 2048;
+      sendCanMsg.can_id = hex2int(msgStr[2]) << 8 | hex2int(msgStr[3]) << 4 | hex2int(msgStr[4]);
+      if (sendCanMsg.can_id > 2047) {
+        sendCanMsg.can_id = 2048;
       }
 
-      canMsg.can_dlc = hex2int(msgStr[6]) << 4 | hex2int(msgStr[7]);
-      if (canMsg.can_dlc > 8) {
-        canMsg.can_dlc = 8;
+      sendCanMsg.can_dlc = hex2int(msgStr[6]) << 4 | hex2int(msgStr[7]);
+      if (sendCanMsg.can_dlc > 8) {
+        sendCanMsg.can_dlc = 8;
       }
 
-      canMsg.data[0] = hex2int(msgStr[9]) << 4 | hex2int(msgStr[10]);
-      canMsg.data[1] = hex2int(msgStr[11]) << 4 | hex2int(msgStr[12]);
-      canMsg.data[2] = hex2int(msgStr[13]) << 4 | hex2int(msgStr[14]);
-      canMsg.data[3] = hex2int(msgStr[15]) << 4 | hex2int(msgStr[16]);
-      canMsg.data[4] = hex2int(msgStr[17]) << 4 | hex2int(msgStr[18]);
-      canMsg.data[5] = hex2int(msgStr[19]) << 4 | hex2int(msgStr[20]);
-      canMsg.data[6] = hex2int(msgStr[21]) << 4 | hex2int(msgStr[22]);
-      canMsg.data[7] = hex2int(msgStr[23]) << 4 | hex2int(msgStr[24]);
+      sendCanMsg.data[0] = hex2int(msgStr[9]) << 4 | hex2int(msgStr[10]);
+      sendCanMsg.data[1] = hex2int(msgStr[11]) << 4 | hex2int(msgStr[12]);
+      sendCanMsg.data[2] = hex2int(msgStr[13]) << 4 | hex2int(msgStr[14]);
+      sendCanMsg.data[3] = hex2int(msgStr[15]) << 4 | hex2int(msgStr[16]);
+      sendCanMsg.data[4] = hex2int(msgStr[17]) << 4 | hex2int(msgStr[18]);
+      sendCanMsg.data[5] = hex2int(msgStr[19]) << 4 | hex2int(msgStr[20]);
+      sendCanMsg.data[6] = hex2int(msgStr[21]) << 4 | hex2int(msgStr[22]);
+      sendCanMsg.data[7] = hex2int(msgStr[23]) << 4 | hex2int(msgStr[24]);
       
-      mcp2515.sendMessage(&canMsg);
+      mcp2515.sendMessage(&sendCanMsg);
 
       Serial.print("W ");
       printTimestamp();
       Serial.print(" ");
-      printMessage((unsigned int)canMsg.can_id, canMsg.can_dlc, canMsg.data);
+      printMessage((unsigned int)sendCanMsg.can_id, sendCanMsg.can_dlc, sendCanMsg.data);
       Serial.println();
       
       digitalWrite(LED_PIN, 1);
@@ -179,16 +181,24 @@ void loop() {
     }
   }  
 
-  if (isInit && mcp2515.readMessage(&canMsg) == MCP2515::ERROR_OK) 
+  while (isInit && mcp2515.readMessage(&(receiveCanMsg[receiveCanMsgIndicator++])) == MCP2515::ERROR_OK) 
   {
-    if (canMsg.can_id > 2047) {
-      canMsg.can_id = 2048;
+    if (sendCanMsg.can_id > 2047) {
+      sendCanMsg.can_id = 2048;
     }
 
+    if (receiveCanMsgIndicator >= 20) {
+      break;
+    }
+  }
+
+  for (int i = 0; i < receiveCanMsgIndicator; i++) {
     Serial.print("R ");
     printTimestamp();
     Serial.print(" ");
-    printMessage((unsigned int)canMsg.can_id, canMsg.can_dlc, canMsg.data);
+    printMessage((unsigned int)receiveCanMsg[i].can_id, receiveCanMsg[i].can_dlc, receiveCanMsg[i].data);
     Serial.println();
   }
+
+  receiveCanMsgIndicator = 0;
 }
