@@ -3,16 +3,16 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:\\Program Files (x86)\\Arduino\\tools\\**",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\avr\\include\\**",
-                ".\\include\\**"
+                ".\\arduino-1.8.12\\tools\\**",
+                ".\\arduino-1.8.12\\libraries\\**",
+                ".\\arduino-1.8.12\\hardware\\arduino\\avr\\**",
+                ".\\arduino-1.8.12\\hardware\\tools\\avr\\avr\\include\\**",
+                ".\\arduino-1.8.12\\include\\**"
             ],
             "forcedInclude": [
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+                ".\\arduino-1.8.12\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
             ],
             "intelliSenseMode": "msvc-x64",
-            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "defines": [
