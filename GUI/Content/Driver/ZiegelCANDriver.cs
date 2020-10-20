@@ -7,6 +7,8 @@
 
     public class ZiegelCANDriver : Driver
     {
+        private SerialPort serial;
+
         public ZiegelCANDriver()
             : base("ZiegelCAN")
         {
@@ -23,12 +25,53 @@
 
         public override void Connect()
         {
-            this.OnErrorOccured(new NotImplementedException());
+            try
+            {
+                serial = new SerialPort();
+                serial.PortName = "COM5";//Set your board COM
+                serial.BaudRate = 9600;
+                serial.Open();
+                while (true)
+                {
+                    string a = serial.ReadExisting();
+                    Console.WriteLine(a);
+                    //Thread.Sleep(200);
+                }
+            }
+            catch(Exception ex)
+            {
+                this.OnErrorOccured(ex);
+            }
+        }
+
+        private void OnSerialDataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                this.OnErrorOccured(ex);
+            }
+        }
+
+        private void OnSerialErrorReceived(object sender, SerialErrorReceivedEventArgs e)
+        {
+            this.OnErrorOccured(new Exception("Serial Error: " + e.EventType));
         }
 
         public override void Disconnect()
         {
-            
+            try
+            {
+                if (serial != null)
+                    serial.Close();
+            }
+            catch (Exception ex)
+            {
+                this.OnErrorOccured(ex);
+            }
         }
     }
 }
